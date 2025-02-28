@@ -74,22 +74,26 @@ public class CadastroCPF extends JFrame{
     }
 
     public void janelaResultados(){
-        janelaDados = new JFrame();
-        janelaDados.setTitle("Dados Cadastrados");
-        janelaDados.setSize(300,200);
-        janelaDados.setLocationRelativeTo(null);
-
         String nomeCadastrado = nomeUsuarioCaixaTexto.getText();
         String cpfCadastrado = cpfCaixaTexto.getText();
         String cursoCadastrado = cursoOpcoes.getSelectedItem().toString();
 
-        dadosCadastrados = new JLabel("<html>Nome: " + nomeCadastrado +
-                "<br>CPF: " + cpfCadastrado +
-                "<br>Curso: " + cursoCadastrado + "<html>");
+        if (cpfCadastrado.equals("___.___.___-__")){
+            JOptionPane.showMessageDialog(this,"A caixa CPF não pode ser deixada vazia!");
+        }else{
+            janelaDados = new JFrame();
+            janelaDados.setTitle("Dados Cadastrados");
+            janelaDados.setSize(300,200);
+            janelaDados.setLocationRelativeTo(null);
 
-        janelaDados.add(dadosCadastrados);
-        janelaDados.setVisible(true);
-        janelaDados.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            dadosCadastrados = new JLabel("<html>Nome: " + nomeCadastrado +
+                    "<br>CPF: " + cpfCadastrado +
+                    "<br>Curso: " + cursoCadastrado + "<html>");
+
+            janelaDados.add(dadosCadastrados);
+            janelaDados.setVisible(true);
+            janelaDados.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        }
     }
 
     public void limpandoOpcoes(){
